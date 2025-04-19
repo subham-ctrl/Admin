@@ -296,7 +296,9 @@
   <!-- Loading Animation Overlay -->
   <!-- Also give overlay the gradient -->
   <div id="loading-overlay" class="animated-gradient-background">
-    <div id="intro-emoji">🔮</div> <!-- Changed emoji for fun -->
+    <!-- **** THIS IS THE CHANGED LINE **** -->
+    <div id="intro-emoji">🪄</div> <!-- Changed emoji to magic wand -->
+    <!-- ********************************* -->
   </div>
 
   <!-- Main Content (Calculator) -->
@@ -458,7 +460,7 @@
 
     function calculate() {
       display.classList.remove("magic");
-      if (!display.value || display.placeholder === "Subham") return;
+      if (!display.value || display.placeholder === "S U B H A M") return;
 
       loadingSpinner.style.display = "block";
       display.style.opacity = '0.5'; // Dim display during calculation
@@ -538,3 +540,10 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
