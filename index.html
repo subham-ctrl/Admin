@@ -15,25 +15,21 @@
     body {
       font-family: 'Arial', sans-serif;
       height: 100vh;
-      overflow: hidden; /* Prevent scrollbars */
-      /* Gradient will be applied to overlay/container */
+      overflow: hidden;
     }
 
-    /* --- Animated Gradient Background --- */
     @keyframes gradientBG {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
-    /* Apply gradient animation */
     .animated-gradient-background {
       background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
       background-size: 400% 400%;
       animation: gradientBG 15s ease infinite;
     }
 
-    /* --- Loading Animation --- */
     #loading-overlay {
       position: fixed;
       top: 0;
@@ -44,12 +40,7 @@
       justify-content: center;
       align-items: center;
       z-index: 1000;
-      opacity: 1;
-      /* Apply gradient here initially */
-      /* Transition for the fade-out */
-      transition: opacity 0.8s ease-in-out 1.8s; /* Slightly longer delay */
-      /* Add gradient class */
-      /* background: url('your-image.png') ... fallback if needed */
+      transition: opacity 0.8s ease-in-out 1.8s;
     }
 
     #intro-emoji {
@@ -58,31 +49,26 @@
       transform: scale(0.5);
       animation:
         emojiPop 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.2s forwards,
-        emojiPulse 2.5s infinite 1.5s ease-in-out; /* Add pulse after pop */
+        emojiPulse 2.5s infinite 1.5s ease-in-out;
       text-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
     @keyframes emojiPop {
       0% { opacity: 0; transform: scale(0.5) rotate(-90deg); }
-      60% { opacity: 1; transform: scale(1.15) rotate(10deg); } /* Slightly bigger bounce */
+      60% { opacity: 1; transform: scale(1.15) rotate(10deg); }
       100% { opacity: 1; transform: scale(1) rotate(0deg); }
     }
 
-    /* Gentle pulsing animation for the emoji */
     @keyframes emojiPulse {
         0%, 100% { transform: scale(1); }
         50% { transform: scale(1.08); }
     }
 
-
     #loading-overlay.hidden {
       opacity: 0;
       pointer-events: none;
     }
-    /* --- End Loading Animation --- */
 
-
-    /* --- Calculator Styles --- */
     .calculator-container {
        display: flex;
        justify-content: center;
@@ -90,8 +76,7 @@
        height: 100vh;
        padding: 10px;
        opacity: 0;
-       /* Apply gradient here after load */
-       animation: fadeInContent 0.5s ease-out 2.6s forwards; /* Delay matches overlay fade start + duration */
+       animation: fadeInContent 0.5s ease-out 2.6s forwards;
     }
 
     @keyframes fadeInContent {
@@ -100,23 +85,22 @@
     }
 
     .calculator {
-      background: rgba(255, 255, 255, 0.15); /* Glassmorphism effect */
-      backdrop-filter: blur(10px); /* Blur background behind calculator */
-      -webkit-backdrop-filter: blur(10px); /* Safari support */
-      border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
-      padding: 25px; /* More padding */
-      border-radius: 20px; /* More rounded */
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Softer shadow */
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
       width: 100%;
       max-width: 380px;
       text-align: center;
       position: relative;
-      transform: scale(0.9) translateY(40px); /* Start smaller and lower */
-      opacity: 0; /* Start invisible for its own animation */
-      animation: scaleInCalc 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2.6s forwards; /* Smoother easing */
+      transform: scale(0.9) translateY(40px);
+      opacity: 0;
+      animation: scaleInCalc 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2.6s forwards;
     }
 
-    /* Improved reveal animation */
     @keyframes scaleInCalc {
         from {
             transform: scale(0.9) translateY(40px);
@@ -128,144 +112,96 @@
         }
     }
 
-
     input[type="text"] {
       width: 100%;
       padding: 20px;
-      font-size: 28px; /* Larger font */
+      font-size: 28px;
       text-align: right;
       border: none;
       border-radius: 10px;
-      margin-bottom: 25px; /* More space */
-      background: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
-      color: #1b1f3b; /* Dark blue text */
+      margin-bottom: 25px;
+      background: rgba(255, 255, 255, 0.7);
+      color: #1b1f3b;
       box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
       font-weight: 500;
     }
-    input[type="text"]::placeholder { /* Style placeholder if needed */
-        color: rgba(27, 31, 59, 0.5);
-    }
-
 
     .buttons {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 12px; /* Slightly larger gap */
+      gap: 12px;
     }
 
-    /* --- Enhanced Button Styling & Ripple --- */
     button {
-      padding: 18px; /* Adjust padding */
+      padding: 18px;
       font-size: 20px;
       border: none;
-      border-radius: 12px; /* More rounded */
-      background: rgba(255, 255, 255, 0.25); /* Button Glass effect */
-      color: #f0f0f0; /* Light text */
-      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.25);
+      color: #f0f0f0;
       cursor: pointer;
       transition: background 0.25s, transform 0.15s ease-out, box-shadow 0.25s ease-out;
-      user-select: none;
-      position: relative; /* Needed for ripple */
-      overflow: hidden; /* Hide ripple overflow */
-      z-index: 1; /* Ensure button content is above ripple */
+      position: relative;
+      overflow: hidden;
     }
-
-    /* Ripple Effect Element */
-    button .ripple {
-        position: absolute;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.4); /* Ripple color */
-        width: 100px;
-        height: 100px;
-        margin-top:-50px; /* Center ripple */
-        margin-left:-50px; /* Center ripple */
-        transform: scale(0);
-        opacity: 1;
-        pointer-events: none; /* Prevent interference */
-    }
-    /* Ripple Animation */
-    button .ripple.animate {
-        animation: rippleEffect 0.7s ease-out;
-    }
-    @keyframes rippleEffect {
-        to {
-            transform: scale(4);
-            opacity: 0;
-        }
-    }
-
 
     button:hover {
       background: rgba(255, 255, 255, 0.35);
-      transform: translateY(-3px) scale(1.03); /* Lift and slightly grow */
+      transform: translateY(-3px) scale(1.03);
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     }
 
     button:active {
-      transform: translateY(0px) scale(0.98); /* Press down effect */
+      transform: translateY(0px) scale(0.98);
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
-    .operator {
-        background: rgba(255, 165, 0, 0.4); /* Orange tint */
-        color: #fff;
+    .operator { background: rgba(255, 165, 0, 0.4); color: #fff; }
+    .equal { background: rgba(46, 204, 113, 0.5); grid-column: span 2; color: #fff; }
+    .clear { background: rgba(231, 76, 60, 0.4); color: #fff; }
+
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.4);
+      width: 100px;
+      height: 100px;
+      transform: scale(0);
+      opacity: 1;
+      pointer-events: none;
     }
-    .operator:hover { background: rgba(255, 165, 0, 0.6); }
 
-    .equal {
-        background: rgba(46, 204, 113, 0.5); /* Green tint */
-        grid-column: span 2;
-        color: #fff;
-     }
-    .equal:hover { background: rgba(46, 204, 113, 0.7); }
-
-    .clear {
-        background: rgba(231, 76, 60, 0.4); /* Red tint */
-        color: #fff;
+    .ripple.animate {
+      animation: rippleEffect 0.7s ease-out;
     }
-    .clear:hover { background: rgba(231, 76, 60, 0.6); }
 
-    /* ✨ Enhanced magic effect */
+    @keyframes rippleEffect {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    .magic {
+      animation: magicEffect 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      color: #1b1f3b;
+      font-weight: 600;
+      display: inline-block;
+    }
+
     @keyframes magicEffect {
       0% { transform: scale(1); opacity: 0.7; text-shadow: 0 0 5px #fff; }
-      30% { transform: scale(1.1) rotate(-2deg); opacity: 1; text-shadow: 0 0 10px #feca57, 0 0 20px #ff9f43; }
+      30% { transform: scale(1.1) rotate(-2deg); text-shadow: 0 0 10px #feca57, 0 0 20px #ff9f43; }
       60% { transform: scale(1.05) rotate(2deg); text-shadow: 0 0 15px #00f, 0 0 25px #0ff; }
       100% { transform: scale(1.1); opacity: 1; text-shadow: 0 0 12px #0ff, 0 0 20px #00f, 0 0 5px #fff; }
     }
 
-    .magic {
-      animation: magicEffect 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; /* Bouncier exit */
-      color: #1b1f3b; /* Match input text */
-      font-weight: 600; /* Bold */
-      display: inline-block; /* Needed for transform */
-    }
-
-
-    .loading {
-      width: 35px;
-      height: 35px;
-      border: 4px solid rgba(255, 255, 255, 0.3); /* Lighter spinner */
-      border-top: 4px solid #f0f0f0; /* White top */
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite; /* Faster spin */
-      margin: 20px auto 0;
-      display: none;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* Sparkles for extra ✨ */
     .sparkle {
       position: absolute;
-      font-size: 16px; /* Slightly smaller default */
-      /* color set by JS */
+      font-size: 16px;
       animation: sparkleFade 1.3s ease-out forwards;
       pointer-events: none;
-      /* text-shadow set by JS */
-       z-index: 10; /* Above buttons */
+      z-index: 10;
     }
 
     @keyframes sparkleFade {
@@ -273,321 +209,111 @@
       100% { opacity: 0; transform: scale(0.3) translateY(-50px) rotate(360deg); }
     }
 
-    /* --- Responsive Adjustments --- */
     @media (max-width: 480px) {
       #intro-emoji { font-size: 6rem; }
-      .calculator { padding: 15px; max-width: 95%; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+      .calculator { padding: 15px; max-width: 95%; }
       input[type="text"] { font-size: 24px; padding: 18px; margin-bottom: 20px;}
-      button { font-size: 16px; padding: 16px; border-radius: 10px; }
-      .buttons { gap: 8px; }
+      button { font-size: 16px; padding: 16px; }
     }
 
-    @media (max-width: 360px) {
-       #intro-emoji { font-size: 5rem; }
-       button { font-size: 14px; padding: 14px; }
-       input[type="text"] { font-size: 20px; padding: 15px; }
-       .buttons { gap: 6px; }
-    }
   </style>
 </head>
-<!-- Add gradient class to body for persistent background -->
 <body class="animated-gradient-background">
-
-  <!-- Loading Animation Overlay -->
-  <!-- Also give overlay the gradient -->
   <div id="loading-overlay" class="animated-gradient-background">
-    <!-- **** THIS IS THE CHANGED LINE **** -->
-    <div id="intro-emoji">🪄</div> <!-- Changed emoji to magic wand -->
-    <!-- ********************************* -->
+    <div id="intro-emoji">🪄</div>
   </div>
 
-  <!-- Main Content (Calculator) -->
   <div class="calculator-container">
-    <!-- Calculator inherits blurred background from body -->
     <div class="calculator">
       <input type="text" id="display" disabled placeholder="Subham" />
       <div class="buttons">
-        <!-- Buttons remain the same structure -->
-         <button onclick="clearDisplay()" class="clear">C</button>
-         <button onclick="appendValue('(')">(</button>
-         <button onclick="appendValue(')')">)</button>
-         <button onclick="appendValue('/')" class="operator">÷</button>
-
-         <button onclick="appendValue('7')">7</button>
-         <button onclick="appendValue('8')">8</button>
-         <button onclick="appendValue('9')">9</button>
-         <button onclick="appendValue('*')" class="operator">×</button>
-
-         <button onclick="appendValue('4')">4</button>
-         <button onclick="appendValue('5')">5</button>
-         <button onclick="appendValue('6')">6</button>
-         <button onclick="appendValue('-')" class="operator">−</button>
-
-         <button onclick="appendValue('1')">1</button>
-         <button onclick="appendValue('2')">2</button>
-         <button onclick="appendValue('3')">3</button>
-         <button onclick="appendValue('+')" class="operator">+</button>
-
-         <button onclick="appendValue('0')">0</button>
-         <button onclick="appendValue('.')">.</button>
-         <button onclick="calculate()" class="equal">=</button>
+        <button onclick="clearDisplay()" class="clear">C</button>
+        <button onclick="appendValue('(')">(</button>
+        <button onclick="appendValue(')')">)</button>
+        <button onclick="appendValue('/')" class="operator">÷</button>
+        <button onclick="appendValue('7')">7</button>
+        <button onclick="appendValue('8')">8</button>
+        <button onclick="appendValue('9')">9</button>
+        <button onclick="appendValue('*')" class="operator">×</button>
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button onclick="appendValue('-')" class="operator">−</button>
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button onclick="appendValue('+')" class="operator">+</button>
+        <button onclick="appendValue('0')">0</button>
+        <button onclick="appendValue('.')">.</button>
+        <button onclick="calculate()" class="equal">=</button>
       </div>
-      <div id="loading-spinner" class="loading"></div>
     </div>
   </div>
 
   <script>
     const display = document.getElementById("display");
-    const loadingSpinner = document.getElementById("loading-spinner");
-    const calculatorDiv = document.querySelector(".calculator");
-    const loadingOverlay = document.getElementById("loading-overlay");
-    const calculatorContainer = document.querySelector('.calculator-container'); // Get container
 
-    // --- Loading Animation Control ---
     window.addEventListener('load', () => {
-       // Start fading overlay
-       setTimeout(() => {
-           loadingOverlay.classList.add('hidden');
-       }, 1800); // Delay matches CSS transition delay
-
-       // Remove overlay from DOM after fade
-       setTimeout(() => {
-           if (loadingOverlay) {
-               loadingOverlay.remove(); // More direct removal
-           }
-           // Add gradient to container *after* overlay is gone if desired
-           // calculatorContainer.classList.add('animated-gradient-background');
-       }, 1800 + 800); // Delay + transition duration
+      setTimeout(() => document.getElementById("loading-overlay").classList.add("hidden"), 1800);
+      setTimeout(() => document.getElementById("loading-overlay").remove(), 2600);
     });
-    // --- End Loading Animation Control ---
-
-    // --- Button Ripple Effect ---
-    function createRipple(event) {
-      const button = event.currentTarget;
-      const existingRipple = button.querySelector(".ripple");
-      if (existingRipple) {
-          existingRipple.remove();
-      }
-
-      const circle = document.createElement("span");
-      const diameter = Math.max(button.clientWidth, button.clientHeight);
-      const radius = diameter / 2;
-
-      circle.style.width = circle.style.height = `${diameter}px`;
-      // Get click position relative to the button
-      const rect = button.getBoundingClientRect();
-      circle.style.left = `${event.clientX - rect.left - radius}px`;
-      circle.style.top = `${event.clientY - rect.top - radius}px`;
-      circle.classList.add("ripple");
-
-      // Trigger the animation
-      circle.classList.add("animate");
-
-      button.appendChild(circle);
-
-      // Clean up the ripple element after animation
-      setTimeout(() => {
-          circle.remove();
-      }, 700); // Match animation duration
-    }
-
-    const buttons = document.querySelectorAll(".buttons button");
-    buttons.forEach(button => {
-      button.addEventListener("click", createRipple);
-    });
-    // --- End Button Ripple Effect ---
-
 
     function appendValue(value) {
-      // Use placeholder for default state
-      if (display.placeholder === "Subham" || display.value === "Error" || display.value === "~_~") {
+      if (display.placeholder === "Subham" || display.value === "Error") {
         display.value = "";
-        display.placeholder = ""; // Clear placeholder on first input
+        display.placeholder = "";
         display.classList.remove("magic");
       }
 
-      // Input validation (same as before)
       const lastChar = display.value.slice(-1);
       const operators = ['+', '-', '*', '/'];
-      if (operators.includes(lastChar) && operators.includes(value)) {
-         return;
-      }
+      if (operators.includes(lastChar) && operators.includes(value)) return;
+
       const parts = display.value.split(/[\+\-\*\/]/);
       const currentNumber = parts[parts.length - 1];
-      if (value === '.' && currentNumber.includes('.')) {
-           return;
-      }
+      if (value === '.' && currentNumber.includes('.')) return;
 
       display.value += value;
     }
 
     function clearDisplay() {
       display.value = "";
-      display.placeholder = "Subham"; // Reset placeholder
+      display.placeholder = "Subham";
       display.classList.remove("magic");
     }
-
-    // --- Enhanced Sparkles ---
-    function createSparkle() {
-      const sparkle = document.createElement("div");
-      const sparkleChars = ["✨", "🌟", "💖", "💫", "💎"];
-      const sparkleColors = ["#feca57", "#ff9f43", "#00f", "#0ff", "#fff"];
-
-      sparkle.classList.add("sparkle");
-      sparkle.textContent = sparkleChars[Math.floor(Math.random() * sparkleChars.length)];
-      sparkle.style.color = sparkleColors[Math.floor(Math.random() * sparkleColors.length)];
-      sparkle.style.fontSize = `${Math.random() * 10 + 12}px`; // Random size
-
-      // Position sparkles more dynamically around the display
-      const displayRect = display.getBoundingClientRect();
-      const calculatorRect = calculatorDiv.getBoundingClientRect();
-
-      // Calculate position relative to calculator div
-      const randomX = Math.random() * displayRect.width;
-      const randomY = Math.random() * displayRect.height - displayRect.height * 0.5; // Above and on display
-
-      sparkle.style.left = `${(displayRect.left - calculatorRect.left) + randomX}px`;
-      sparkle.style.top = `${(displayRect.top - calculatorRect.top) + randomY}px`;
-
-      // Random rotation and slight horizontal drift
-      sparkle.style.transform = `rotate(${Math.random() * 90 - 45}deg)`;
-      sparkle.style.setProperty('--sparkle-drift', `${Math.random() * 20 - 10}px`); // Custom property for potential use in animation
-
-      calculatorDiv.appendChild(sparkle);
-      setTimeout(() => sparkle.remove(), 1300); // Match sparkle animation duration
-    }
-
 
     function calculate() {
-      display.classList.remove("magic");
-      if (!display.value || display.placeholder === "S U B H A M") return;
-
-      loadingSpinner.style.display = "block";
-      display.style.opacity = '0.5'; // Dim display during calculation
-
-      setTimeout(() => {
-        try {
-          let expression = display.value.replace(/×/g, '*').replace(/÷/g, '/');
-
-          // Basic security / validation (same as before)
-          if (/[^0-9+\-*/().\s]/.test(expression)) { throw new Error("Invalid Characters"); }
-          let openParen = (expression.match(/\(/g) || []).length;
-          let closeParen = (expression.match(/\)/g) || []).length;
-          if (openParen !== closeParen) { throw new Error("Mismatched Parentheses"); }
-          if (/\/0(?!\.)/.test(expression)) { throw new Error("Division by Zero"); }
-
-          let result = eval(expression);
-
-          // Formatting (same as before)
-          if (Number.isFinite(result) && Math.abs(result % 1) > 1e-10 && Math.abs(result % 1) < (1 - 1e-10)) {
-                result = parseFloat(result.toFixed(8)); // Slightly fewer decimals
-          }
-          if (!Number.isFinite(result)) { throw new Error("Invalid Result"); }
-
-          display.value = result;
-          display.classList.add("magic");
-
-          // More sparkles!
-          const numSparkles = Math.min(10, Math.max(5, Math.abs(result).toString().length)); // More sparkles for bigger numbers
-          for (let i = 0; i < numSparkles; i++) {
-              setTimeout(createSparkle, i * 60); // Stagger sparkles
-          }
-        } catch (error) {
-           console.error("Calculation Error:", error.message);
-           display.value = "~_~";
-           display.classList.remove("magic");
-        } finally {
-             display.style.opacity = '1';
-             loadingSpinner.style.display = "none";
-        }
-      }, 500); // Faster calculation simulation
+      try {
+        const result = eval(display.value);
+        display.value = result;
+        display.classList.add("magic");
+        showSparkle();
+      } catch {
+        display.value = "Error";
+      }
     }
 
-    // Keyboard support (same as before)
-    document.addEventListener('keydown', (event) => {
-        const key = event.key;
-        const validKeys = '0123456789.+-*/()';
+    function showSparkle() {
+      const sparkle = document.createElement("div");
+      sparkle.classList.add("sparkle");
+      sparkle.textContent = "✨";
+      sparkle.style.left = Math.random() * 100 + "%";
+      sparkle.style.top = "30px";
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1300);
+    }
 
-        if (validKeys.includes(key)) {
-            event.preventDefault();
-            // Find corresponding button and simulate click for visual feedback (ripple)
-            const button = Array.from(buttons).find(btn => btn.innerText === (key === '*' ? '×' : key === '/' ? '÷' : key));
-            if (button) button.click(); // This calls appendValue via the button's onclick
-            else appendValue(key === '*' ? '×' : key === '/' ? '÷' : key); // Fallback if no direct button match (e.g. ())
-
-        } else if (key === 'Enter' || key === '=') {
-            event.preventDefault();
-             const equalsButton = document.querySelector('.equal');
-             if (equalsButton) equalsButton.click(); // Trigger ripple
-             else calculate();
-        } else if (key === 'Backspace') {
-            event.preventDefault();
-             if (display.value !== "~_~") {
-                 display.value = display.value.slice(0, -1);
-                 if (display.value === "") {
-                     clearDisplay();
-                 }
-             }
-        } else if (key === 'Escape' || key.toLowerCase() === 'c') {
-            event.preventDefault();
-             const clearButton = document.querySelector('.clear');
-             if (clearButton) clearButton.click(); // Trigger ripple
-             else clearDisplay();
-        }
+    document.querySelectorAll(".buttons button").forEach(button => {
+      button.addEventListener("click", e => {
+        const ripple = document.createElement("span");
+        ripple.classList.add("ripple", "animate");
+        const rect = button.getBoundingClientRect();
+        ripple.style.left = `${e.clientX - rect.left - 50}px`;
+        ripple.style.top = `${e.clientY - rect.top - 50}px`;
+        button.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 700);
+      });
     });
-
   </script>
-
 </body>
 </html>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tiny Floating GIF with Emoji Touch</title>
-  <style>
-    /* Reset & full-screen setup */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; }
-
-    /* Modern gradient background */
-    body {
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      position: relative;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-
-    :root {
-      --gif-size: 50px;
-    }
-
-    /* Floating GIF styling */
-    #floatingGif {
-      position: absolute;
-      width: var(--gif-size);
-      max-width: 15vw;
-      cursor: pointer;
-      image-rendering: crisp-edges;
-    }
-
-    /* Emoji touch animation */
-    .emoji {
-      position: absolute;
-      pointer-events: none;
-      font-size: 24px;
-      opacity: 1;
-      animation: emojiPop 1s ease-out forwards;
-      user-select: none;
-    }
-    @keyframes emojiPop {
-      0%   { transform: translateY(0) scale(0.5); opacity: 1; }
-      50%  { transform: translateY(-40px) scale(1.2); opacity: 0.8; }
-      100% { transform: translateY(-80px) scale(1); opacity: 0; }
-    }
-  </style>
-</head>
-<body>
- 
