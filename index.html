@@ -542,8 +542,126 @@
 </html>
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tiny Floating GIF with Emoji Touch</title>
+  <style>
+    /* Reset & full-screen setup */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; }
 
+    /* Modern gradient background */
+    body {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      position: relative;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
 
+    :root {
+      --gif-size: 50px;
+    }
 
+    /* Floating GIF styling */
+    #floatingGif {
+      position: absolute;
+      width: var(--gif-size);
+      max-width: 15vw;
+      cursor: pointer;
+      image-rendering: crisp-edges;
+    }
 
+    /* Emoji touch animation */
+    .emoji {
+      position: absolute;
+      pointer-events: none;
+      font-size: 24px;
+      opacity: 1;
+      animation: emojiPop 1s ease-out forwards;
+      user-select: none;
+    }
+    @keyframes emojiPop {
+      0%   { transform: translateY(0) scale(0.5); opacity: 1; }
+      50%  { transform: translateY(-40px) scale(1.2); opacity: 0.8; }
+      100% { transform: translateY(-80px) scale(1); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Place geto.gif alongside this file -->
+  <img src="geto.gif" id="floatingGif" alt="Tiny Floating GIF" />
 
+  <script>
+    const gif = document.getElementById('floatingGif');
+    const emojis = ['✨','🌟','💫','🎉','❤️'];
+
+    // Start perimeter float via Web Animations API
+    const size = getComputedStyle(document.documentElement).getPropertyValue('--gif-size').trim();
+    const px = parseFloat(size);
+    const cw = document.documentElement.clientWidth - px;
+    const ch = document.documentElement.clientHeight - px;
+    // keyframes for four corners clockwise and back (alternate)
+    gif.style.top = '0px'; gif.style.left = '0px';
+    gif.animate([
+      { top: '0px',        left: '0px'       },
+      { top: '0px',        left: `${cw}px`  },
+      { top: `${ch}px`,    left: `${cw}px`  },
+      { top: `${ch}px`,    left: '0px'       },
+      { top: '0px',        left: '0px'       }
+    ], {
+      duration: 16000,
+      iterations: Infinity,
+      direction: 'alternate',
+      easing: 'linear'
+    });
+
+    // Click reaction & emoji burst
+    gif.addEventListener('click', (e) => {
+      // react animation
+      gif.animate([
+        { transform: 'scale(1) rotate(0deg)' },
+        { transform: 'scale(1.4) rotate(25deg)' },
+        { transform: 'scale(1) rotate(0deg)' }
+      ], { duration: 600, easing: 'ease-out' });
+
+      // Emoji burst
+      const rect = gif.getBoundingClientRect();
+      const count = 5;
+      for (let i = 0; i < count; i++) {
+        const span = document.createElement('span');
+        span.className = 'emoji';
+        span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        const xOffset = (Math.random() - 0.5) * rect.width;
+        const yOffset = (Math.random() - 0.5) * rect.height;
+        span.style.left = (rect.left + rect.width/2 + xOffset) + 'px';
+        span.style.top  = (rect.top  + rect.height/2 + yOffset) + 'px';
+        document.body.appendChild(span);
+        span.addEventListener('animationend', () => span.remove());
+      }
+    });
+
+    // Recompute animation on resize
+    window.addEventListener('resize', () => {
+      const cw2 = document.documentElement.clientWidth - px;
+      const ch2 = document.documentElement.clientHeight - px;
+      // Cancel old animation and start new one
+      gif.getAnimations().forEach(a => a.cancel());
+      gif.style.top = '0px'; gif.style.left = '0px';
+      gif.animate([
+        { top: '0px',        left: '0px'       },
+        { top: '0px',        left: `${cw2}px` },
+        { top: `${ch2}px`,   left: `${cw2}px` },
+        { top: `${ch2}px`,   left: '0px'       },
+        { top: '0px',        left: '0px'       }
+      ], {
+        duration: 16000,
+        iterations: Infinity,
+        direction: 'alternate',
+        easing: 'linear'
+      });
+    });
+  </script>
+</body>
+</html>
